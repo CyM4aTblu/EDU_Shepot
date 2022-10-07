@@ -191,8 +191,8 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel page = reviewPage(1);
-                review.add(page);
                 page.repaint();
+                review.add(page);
                 review.repaint();
             }
         });
@@ -212,7 +212,6 @@ public class MainFrame extends JFrame {
                 JPanel topBar = new JPanel();
                 topBar.setBounds(0, 0 , 1280, 75);
                 topBar.setBackground(topBtmBarBackground);
-                page.add(topBar);
 
                 JLabel txt = new JLabel();
                 txt.setText("Спрут-6МА");
@@ -220,6 +219,9 @@ public class MainFrame extends JFrame {
                 txt.setHorizontalTextPosition(JLabel.CENTER);
                 txt.setForeground(textColor);
                 topBar.add(txt);
+                topBar.repaint();
+                page.add(topBar);
+                page.repaint();
                 return page;
             default:
                 return new JPanel();
