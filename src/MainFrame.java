@@ -4,6 +4,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
+
+    // Colors
+    Color darkCyan = new Color(66, 122, 171, 134);
+    Color lightBlueBtn = new Color(162, 226, 245);
+    Color greyCyan = new Color(53, 66, 75);
+    Color greyExitButton = new Color(81, 90, 101);
+
     //---- GLOBAL ELEMENTS ------
     CardLayout crd;
     JPanel menu, about, review;
@@ -31,7 +38,7 @@ public class MainFrame extends JFrame {
 
         //----------------------------------------------------------------------------
 
-        reviewSlides = getContentPane();// set up for slides
+        reviewSlides = new Container() ;// set up for slides
         reviewCrd = new CardLayout();
         reviewSlides.setLayout(reviewCrd);
 
@@ -47,7 +54,7 @@ public class MainFrame extends JFrame {
         this.setSize(1280,720);
         this.setTitle("Edu SHEPOT");
 
-        ImageIcon image = new ImageIcon(".\\src\\Logo.png");
+        ImageIcon image = new ImageIcon(".\\assets\\Logo.png");
         this.setIconImage(image.getImage());
 
 
@@ -61,7 +68,7 @@ public class MainFrame extends JFrame {
         JLabel img = new JLabel();
         img.setBounds(0, 50 ,500, 500);
         menu.add(img);
-        ImageIcon unit = new ImageIcon(".\\src\\shepot.png");
+        ImageIcon unit = new ImageIcon(".\\assets\\shepot.png");
         img.setIcon(unit);
         menu.setLayout(null);
 
@@ -81,67 +88,35 @@ public class MainFrame extends JFrame {
         buttons.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         buttons.setLayout(new GridLayout(3, 3, 10, 10));
 
-        JButton rewiewBtn = new JButton("Обзор");
-        rewiewBtn.setFocusable(false);
-        rewiewBtn.setFont(new Font("Calibri", Font.BOLD, 50 ));
-        rewiewBtn.setForeground(new Color(66, 122, 171, 134));
-        rewiewBtn.setBounds(25, 10, 280, 90);
-        rewiewBtn.setBackground(new Color(162, 226, 245));
-        rewiewBtn.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) { crd.show(box, "review");
+        // Creating review button
+        JButton reviewBtn = createMainMenuButton("Обзор", darkCyan, lightBlueBtn, 25, 10, 280, 90);
+        reviewBtn.addActionListener(e -> crd.show(box, "review"));
+        buttons.add(reviewBtn);
 
-            }
-        });
-        buttons.add(rewiewBtn);
-
-        JButton contBtn = new JButton("Состав");
-        contBtn.setFocusable(false);
-        contBtn.setFont(new Font("Calibri", Font.BOLD, 50 ));
-        contBtn.setForeground(new Color(66, 122, 171, 134));
-        contBtn.setBounds(345, 10, 280, 90);
-        contBtn.setBackground(new Color(162, 226, 245));
+        // Creating Contents button
+        JButton contBtn = createMainMenuButton("Состав", darkCyan, lightBlueBtn, 345, 10, 280, 90);
+        contBtn.addActionListener(e -> {}); // TODO: fill w/ proper action
         buttons.add(contBtn);
 
-        JButton lrnBtn = new JButton("Обучение");
-        lrnBtn.setFocusable(false);
-        lrnBtn.setFont(new Font("Calibri", Font.BOLD, 50 ));
-        lrnBtn.setForeground(new Color(66, 122, 171, 134));
-        lrnBtn.setBounds(25, 110, 280, 90);
-        lrnBtn.setBackground(new Color(162, 226, 245));
-        buttons.add(lrnBtn);
+        // Creating Learn button
+        JButton learnBtn = createMainMenuButton("Обучение", darkCyan, lightBlueBtn, 25, 110, 280, 90);
+        learnBtn.addActionListener(e -> {}); // TODO: fill w/ proper action
+        buttons.add(learnBtn);
 
-        JButton hlpBtn = new JButton("Справка");
-        hlpBtn.setFocusable(false);
-        hlpBtn.setFont(new Font("Calibri", Font.BOLD, 50 ));
-        hlpBtn.setForeground(new Color(66, 122, 171, 134));
-        hlpBtn.setBounds(345, 110, 280, 90);
-        hlpBtn.setBackground(new Color(162, 226, 245));
-        buttons.add(hlpBtn);
+        // Creating Help button
+        JButton helpBtn = createMainMenuButton("Справка", darkCyan, lightBlueBtn, 345, 110, 280, 90);
+        helpBtn.addActionListener(e -> {}); // TODO: fill w/ proper action
+        buttons.add(helpBtn);
 
-        JButton abtBtn = new JButton("О программе");
-        abtBtn.setFocusable(false);
-        abtBtn.setFont(new Font("Calibri", Font.BOLD, 35 ));
-        abtBtn.setForeground(new Color(66, 122, 171, 134));
-        abtBtn.setBounds(25, 220, 280, 90);
-        abtBtn.setBackground(new Color(162, 226, 245));
-        //abtBtn.addActionListener(e -> About());
-        abtBtn.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) { crd.show(box, "about");
+        // Creating About button
+        JButton aboutBtn = createMainMenuButton("О программе", darkCyan, lightBlueBtn, 25, 220, 280, 90);
+        aboutBtn.addActionListener(e -> crd.show(box, "about"));
+        buttons.add(aboutBtn);
 
-            }
-        });
-        buttons.add(abtBtn);
-
-        JButton extBtn = new JButton("Выход");
-        extBtn.setFont(new Font("Calibri", Font.BOLD, 50 ));
-        extBtn.setFocusable(false);
-        extBtn.setForeground(new Color(53, 66, 75));
-        extBtn.setBounds(345, 220, 280, 90);
-        extBtn.setBackground(new Color(81, 90, 101));
-        extBtn.addActionListener(e -> super.dispose());
-        buttons.add(extBtn);
+        // Creating Exit Button
+        JButton exitBtn = createMainMenuButton("Выход", greyCyan, greyExitButton, 345, 220, 280, 90);
+        exitBtn.addActionListener(e -> super.dispose());
+        buttons.add(exitBtn);
     }
 
     private void createAbout() {
@@ -169,7 +144,7 @@ public class MainFrame extends JFrame {
 
         JButton returnToMenu = new JButton();
         returnToMenu.setFocusable(false);
-        ImageIcon img = new ImageIcon(".\\src\\ReturnArrow.png");
+        ImageIcon img = new ImageIcon(".\\assets\\ReturnArrow.png");
         returnToMenu.setBackground(new Color(209, 241, 255));
         returnToMenu.setBounds(50, 15, 100, 45);
         returnToMenu.setIcon(img);
@@ -199,7 +174,7 @@ public class MainFrame extends JFrame {
 
         JButton returnToMenu = new JButton();
         returnToMenu.setFocusable(false);
-        ImageIcon img = new ImageIcon(".\\src\\ReturnArrow.png");
+        ImageIcon img = new ImageIcon(".\\assets\\ReturnArrow.png");
         returnToMenu.setBounds(50, 15, 100, 45);
         returnToMenu.setIcon(img);
         returnToMenu.setContentAreaFilled(false);
@@ -213,7 +188,7 @@ public class MainFrame extends JFrame {
         });
         btmBar.add(returnToMenu);
 
-        ImageIcon nxt = new ImageIcon(".\\src\\ArrowNext.png");
+        ImageIcon nxt = new ImageIcon(".\\assets\\ArrowNext.png");
         JButton nextSlide = new JButton(nxt);
         nextSlide.setFocusable(false);
         //nextSlide.setBackground(new Color(209, 241, 255));
@@ -229,6 +204,16 @@ public class MainFrame extends JFrame {
         nextSlide.setFocusPainted(false);
         nextSlide.setBorderPainted(false);
         btmBar.add(nextSlide);
+    }
+
+    private JButton createMainMenuButton(String text, Color foreground, Color background, int x, int y, int width, int height) {
+        JButton btn = new JButton(text);
+        btn.setFocusable(false);
+        btn.setFont(new Font("Calibri", Font.BOLD, 45));
+        btn.setForeground(foreground);
+        btn.setBounds(x, y, width, height);
+        btn.setBackground(background);
+        return btn;
     }
 
     private void setRw1(){
