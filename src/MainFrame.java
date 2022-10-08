@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
-
     // Colors
     Color darkCyan = new Color(66, 122, 171, 134);
     Color lightBlueBtn = new Color(162, 226, 245);
@@ -39,8 +38,6 @@ public class MainFrame extends JFrame {
 
         ImageIcon image = new ImageIcon(".\\assets\\Logo.png");
         this.setIconImage(image.getImage());
-
-
     }
 
     private void createMenu() {
@@ -59,19 +56,17 @@ public class MainFrame extends JFrame {
         txt.setText("<html>Автоматизированный комплекс<br>для проведения акустических<br>и виброакустических измерений<br>''ШЕПОТ''</html>");
         txt.setForeground(new Color(0x76AFD0));
         txt.setFont(new Font("Calibri", Font.BOLD, 40 ));
-        //txt.setVerticalAlignment(JLabel.TOP);
         txt.setBounds(500, 0, 700, 200);
         menu.add(txt);
 
         JPanel buttons = new JPanel();
         buttons.setBackground(new Color(200, 243, 255, 255));
         buttons.setBounds(550, 250, 650, 350);
-        //buttons.setLayout(new GridLayout(2, 1));
         menu.add(buttons);
         buttons.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         buttons.setLayout(new GridLayout(3, 3, 10, 10));
 
-        // Creating review button
+        // Creating Review button
         JButton reviewBtn = createMainMenuButton("Обзор", darkCyan, lightBlueBtn, 25, 10, 280, 90);
         reviewBtn.addActionListener(e -> crd.show(box, "review"));
         buttons.add(reviewBtn);
