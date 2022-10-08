@@ -15,11 +15,6 @@ public class MainFrame extends JFrame {
     CardLayout crd;
     JPanel menu, about, review;
     Container box;
-    // ---- ELEMENTS OF REVIEW SCREEN ----
-
-    CardLayout reviewCrd;
-    JPanel rw1,rw2,rw3,rw4,rw5,rw6,rw7;
-    Container reviewSlides;
 
     MainFrame() {
         box = getContentPane();// set up for screens panels containers
@@ -28,23 +23,11 @@ public class MainFrame extends JFrame {
 
         createMenu();//calling constructors of screen panels
         createAbout();
-        createReview();
-        setRw1();
+        review = new ReviewFrame(e -> crd.show(box, "menu"));
 
         box.add("menu", menu);//adding elements in container
         box.add("about", about);
         box.add("review", review);
-        //box.add("rw1", rw1);
-
-        //----------------------------------------------------------------------------
-
-        reviewSlides = new Container() ;// set up for slides
-        reviewCrd = new CardLayout();
-        reviewSlides.setLayout(reviewCrd);
-
-        setRw1();
-
-        reviewSlides.add("1", rw1);
 
         //---------------------------------------------------------------------------
 
@@ -157,55 +140,6 @@ public class MainFrame extends JFrame {
         btmBar.add(returnToMenu);
     }
 
-    private void createReview() {
-
-
-        //-----------------------------------------------------------------------
-
-        review = new JPanel();
-        review.setLayout(null);
-        review.setBackground(new Color(224, 255, 255));
-
-        JPanel btmBar = new JPanel();
-        btmBar.setLayout(null);
-        btmBar.setBounds(0, 605 , 1280, 75);
-        btmBar.setBackground(new Color(209, 241, 255));
-        review.add(btmBar);
-
-        JButton returnToMenu = new JButton();
-        returnToMenu.setFocusable(false);
-        ImageIcon img = new ImageIcon(".\\assets\\ReturnArrow.png");
-        returnToMenu.setBounds(50, 15, 100, 45);
-        returnToMenu.setIcon(img);
-        returnToMenu.setContentAreaFilled(false);
-        returnToMenu.setFocusPainted(false);
-        returnToMenu.setBorderPainted(false);
-        returnToMenu.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) { crd.show(box, "menu");
-
-            }
-        });
-        btmBar.add(returnToMenu);
-
-        ImageIcon nxt = new ImageIcon(".\\assets\\ArrowNext.png");
-        JButton nextSlide = new JButton(nxt);
-        nextSlide.setFocusable(false);
-        //nextSlide.setBackground(new Color(209, 241, 255));
-        // mid X = 640
-        nextSlide.setBounds(680, 5, 65, 65);
-        nextSlide.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) { reviewCrd.show(reviewSlides, "1");
-
-            }
-        });
-        nextSlide.setContentAreaFilled(false);
-        nextSlide.setFocusPainted(false);
-        nextSlide.setBorderPainted(false);
-        btmBar.add(nextSlide);
-    }
-
     private JButton createMainMenuButton(String text, Color foreground, Color background, int x, int y, int width, int height) {
         JButton btn = new JButton(text);
         btn.setFocusable(false);
@@ -214,12 +148,5 @@ public class MainFrame extends JFrame {
         btn.setBounds(x, y, width, height);
         btn.setBackground(background);
         return btn;
-    }
-
-    private void setRw1(){
-        rw1 = new JPanel();
-        rw1.setLayout(null);
-        rw1.setBackground(new Color(221, 255, 209));
-        rw1.setBounds(0,75 , 1280, 500);
     }
 }
