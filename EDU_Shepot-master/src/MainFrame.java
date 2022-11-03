@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
     Color btmTopBars = new Color(197, 230, 236);
     //---- GLOBAL ELEMENTS ------
     CardLayout crd;
-    JPanel menu, about, review;
+    JPanel menu, about, review, composition;
     Container box;
 
     MainFrame() {
@@ -25,10 +25,12 @@ public class MainFrame extends JFrame {
         createMenu();//calling constructors of screen panels
         createAbout();
         review = new ReviewFrame(e -> crd.show(box, "menu"));
+        composition = new CompositionFrame(e -> crd.show(box, "menu"));
 
         box.add("menu", menu);//adding elements in container
         box.add("about", about);
         box.add("review", review);
+        box.add("composition", composition);
 
         //---------------------------------------------------------------------------
 
@@ -41,7 +43,6 @@ public class MainFrame extends JFrame {
         ImageIcon image = new ImageIcon(".\\assets\\Logo.png");
         this.setIconImage(image.getImage());
     }
-
     private void createMenu() {
         menu = new JPanel();
         menu.setLayout(null);
@@ -76,7 +77,7 @@ public class MainFrame extends JFrame {
 
         // Creating Contents button
         JButton contBtn = createMainMenuButton("Состав", darkCyan, lightBlueBtn, 345, 10, 280, 90);
-        contBtn.addActionListener(e -> {}); // TODO: fill w/ proper action
+        contBtn.addActionListener(e ->  crd.show(box, "composition"));
         buttons.add(contBtn);
 
         // Creating Learn button

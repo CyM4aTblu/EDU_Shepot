@@ -16,8 +16,8 @@ public class ReviewFrame extends JPanel {
     private CardLayout crd;
     private Container slideShow;
     private JButton returnToMenu;
-    private JPanel firstSlide,secondSlide, thirdSlide, founthLide,
-            fifthSlide, sixthSlide, seventhSlide, eighthSlide, ninethSlide, lastSlide;
+    private JPanel firstSlide,secondSlide, thirdSlide, founthLide;
+            //fifthSlide, sixthSlide, seventhSlide, eighthSlide, ninethSlide, lastSlide;
 
     ReviewFrame(ActionListener onReturn) {
         crd = new CardLayout();
