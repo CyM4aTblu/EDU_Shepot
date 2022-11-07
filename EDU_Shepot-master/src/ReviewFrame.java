@@ -575,7 +575,7 @@ public class ReviewFrame extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                partName.setText("<html>Зарядное условие</html>");
+                partName.setText("<html>Зарядное устройство</html>");
             }
 
             @Override
@@ -586,7 +586,18 @@ public class ReviewFrame extends JPanel {
         secondSlide.add(part8);
     }
     private void createThirdSlide() {
-        thirdSlide = createSlide(".\\assets\\Calibri.png", "Комплекс акустического и виброакустического контроля \"Колибри\"", true, 40);
+        thirdSlide = createSlide("", "Комплекс акустического и виброакустического контроля \"Колибри\"", true, 40);
+
+        JLabel img = new JLabel();
+        ImageIcon unit = new ImageIcon(".\\assets\\Calibri.png");
+        Image image = unit.getImage();
+        Image newimg;
+        img.setBounds(-40, 80, 620, 500);
+        newimg = image.getScaledInstance(620, 500,  java.awt.Image.SCALE_SMOOTH);
+        unit = new ImageIcon(newimg);
+        img.setVerticalAlignment(JLabel.TOP);
+        img.setIcon(unit);
+        thirdSlide.add(img);
 
         JLabel generalInfo = new JLabel();
         generalInfo.setBounds(575, 75, 600, 350);

@@ -584,11 +584,22 @@ public class CompositionFrame extends JPanel {
     }
 
     private void createThirdSlide() {
-        thirdSlide = createSlide(".\\assets\\Work_Layout.png", "Рабочая укладка", true, 70);
+        thirdSlide = createSlide("", "Рабочая укладка", true, 70);
+
+        JLabel img = new JLabel();
+        ImageIcon unit = new ImageIcon(".\\assets\\Work_Layout.png");
+        Image image = unit.getImage();
+        Image newimg;
+        img.setBounds(30, 80, 400, 500);
+        newimg = image.getScaledInstance(400, 500,  java.awt.Image.SCALE_SMOOTH);
+        unit = new ImageIcon(newimg);
+        img.setVerticalAlignment(JLabel.TOP);
+        img.setIcon(unit);
+        thirdSlide.add(img);
 
         JLabel upInfo = new JLabel();
-        upInfo.setBounds(730, 75, 500, 600);
-        upInfo.setFont(new Font("Calibri", Font.BOLD, 19));
+        upInfo.setBounds(530, 75,700,600);
+        upInfo.setFont(new Font("Calibri", Font.BOLD, 22));
         upInfo.setVerticalAlignment(JLabel.TOP);
         upInfo.setForeground(textColor);
         upInfo.setHorizontalAlignment(JLabel.LEFT);
@@ -675,18 +686,38 @@ public class CompositionFrame extends JPanel {
     }
 
     private void createSeventhSlide() {
-        seventhSlide = createSlide(".\\assets\\Sheroh-2MI.png", "Генератор шума «Шорох-2МИ»", true, 70);
+        seventhSlide = createSlide("", "Генератор шума «Шорох-2МИ»", true, 70);
+
+        JLabel img = new JLabel();
+        ImageIcon unit = new ImageIcon(".\\assets\\Sheroh-2MI.png");
+        Image image = unit.getImage();
+        Image newimg;
+        img.setBounds(30, 80, 700, 300);
+        newimg = image.getScaledInstance(700, 300,  java.awt.Image.SCALE_SMOOTH);
+        unit = new ImageIcon(newimg);
+        img.setVerticalAlignment(JLabel.TOP);
+        img.setIcon(unit);
+        seventhSlide.add(img);
+
         JLabel btm2Txt = new JLabel("<html>Генератор шума предназначен для генерации электрического сигнала с возможностью регулировки" +
-                " его уровня на центральных октавных частотах 250, 500, 1000, 2000, 4000 Гц. На панели генератора имеются: разъем «Выход»" +
-                " для подключения звукового излучателя, переключатель «Внутр-Внеш» для подключения выхода к источнику шума, регулятор уровня" +
-                " сигнала и кнопка «Упр» для ручного отключения генератора. Уровень сигнала можно изменить до 20 дБ с помощью эквалайзера" +
-                " находящегося под крышкой генератора.</html>");
+                " его уровня на центральных октавных частотах 250, 500, 1000, 2000, 4000 Гц. </html>");
         btm2Txt.setBounds(780, 90, 420, 500);
-        btm2Txt.setFont(new Font("Calibri", Font.BOLD, 22));
+        btm2Txt.setFont(new Font("Calibri", Font.BOLD, 30));
         btm2Txt.setVerticalAlignment(JLabel.TOP);
         btm2Txt.setForeground(textColor);
         btm2Txt.setHorizontalAlignment(JLabel.LEFT);
         seventhSlide.add(btm2Txt);
+
+        JLabel btm3Txt = new JLabel("<html>На панели генератора имеются: разъем «Выход»" +
+                " для подключения звукового излучателя, переключатель «Внутр-Внеш» для подключения выхода к источнику шума, регулятор уровня" +
+                " сигнала и кнопка «Упр» для ручного отключения генератора. Уровень сигнала можно изменить до 20 дБ с помощью эквалайзера" +
+                " находящегося под крышкой генератора.</html>");
+        btm3Txt.setBounds(30, 400, 1000, 200);
+        btm3Txt.setFont(new Font("Calibri", Font.BOLD, 30));
+        btm3Txt.setVerticalAlignment(JLabel.TOP);
+        btm3Txt.setForeground(textColor);
+        btm3Txt.setHorizontalAlignment(JLabel.LEFT);
+        seventhSlide.add(btm3Txt);
     }
 
     private void createNinethSlide() {
