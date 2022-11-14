@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="EDU_Shepot:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EDU_Shepot_jar</output-path>
+    <root id="archive" name="EDU_Shepot.jar">
+      <element id="module-output" name="EDU_Shepot" />
+      <element id="dir-copy" path="$PROJECT_DIR$/assets" />
+    </root>
+  </artifact>
+</component>

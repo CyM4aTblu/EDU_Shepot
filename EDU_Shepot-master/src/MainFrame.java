@@ -7,10 +7,10 @@ public class MainFrame extends JFrame {
     // --------------COLORS-----------
     Color darkCyan = new Color(66, 122, 171, 134);
     Color lightBlueBtn = new Color(162, 226, 245);
-    Color greyCyan = new Color(53, 66, 75);
+    Color greyCyan = new Color(42, 55, 63);
     Color greyExitButton = new Color(81, 90, 101);
     Color background = new Color(224, 255, 255);
-    Color textColor = new Color(0x76AFD0);
+    Color textColor = new Color(0x3d74a6);
     Color btmTopBars = new Color(197, 230, 236);
     //---- GLOBAL ELEMENTS ------
     CardLayout crd;
@@ -71,34 +71,39 @@ public class MainFrame extends JFrame {
         buttons.setLayout(new GridLayout(3, 3, 10, 10));
 
         // Creating Review button
-        JButton reviewBtn = createMainMenuButton("Обзор", darkCyan, lightBlueBtn, 25, 10, 280, 90);
+        JButton reviewBtn = createMainMenuButton("Обзор", textColor, lightBlueBtn, 25, 10, 280, 90);
         reviewBtn.addActionListener(e -> crd.show(box, "review"));
         buttons.add(reviewBtn);
 
         // Creating Contents button
-        JButton contBtn = createMainMenuButton("Состав", darkCyan, lightBlueBtn, 345, 10, 280, 90);
+        JButton contBtn = createMainMenuButton("Состав", textColor, lightBlueBtn, 345, 10, 280, 90);
         contBtn.addActionListener(e ->  crd.show(box, "composition"));
         buttons.add(contBtn);
 
         // Creating Learn button
-        JButton learnBtn = createMainMenuButton("Обучение", darkCyan, lightBlueBtn, 25, 110, 280, 90);
+        JButton learnBtn = createMainMenuButton("Обучение", textColor, lightBlueBtn, 25, 110, 280, 90);
         learnBtn.addActionListener(e -> {}); // TODO: fill w/ proper action
         buttons.add(learnBtn);
 
         // Creating Help button
-        JButton helpBtn = createMainMenuButton("Справка", darkCyan, lightBlueBtn, 345, 110, 280, 90);
+        JButton helpBtn = createMainMenuButton("Справка", textColor, lightBlueBtn, 345, 110, 280, 90);
         helpBtn.addActionListener(e -> {}); // TODO: fill w/ proper action
         buttons.add(helpBtn);
 
         // Creating About button
-        JButton aboutBtn = createMainMenuButton("О программе", darkCyan, lightBlueBtn, 25, 220, 280, 90);
+        JButton aboutBtn = createMainMenuButton("О программе", textColor, lightBlueBtn, 25, 220, 280, 90);
         aboutBtn.addActionListener(e -> crd.show(box, "about"));
         buttons.add(aboutBtn);
 
         // Creating Exit Button
-        JButton exitBtn = createMainMenuButton("Выход", greyCyan, greyExitButton, 345, 220, 280, 90);
+        JButton structBtn = createMainMenuButton("Структура", textColor, lightBlueBtn, 345, 220, 280, 90);
+        //exitBtn.addActionListener(e -> super.dispose());
+        structBtn.addActionListener(e -> {});
+        buttons.add(structBtn);
+
+        JButton exitBtn = createMainMenuButton("Выход", greyCyan, greyExitButton, 100, 550, 280, 90);
         exitBtn.addActionListener(e -> super.dispose());
-        buttons.add(exitBtn);
+        menu.add(exitBtn);
     }
 
     private void createAbout() {

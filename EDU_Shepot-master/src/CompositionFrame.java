@@ -11,8 +11,7 @@ public class CompositionFrame extends JPanel {
     Color greyCyan = new Color(53, 66, 75);
     Color greyExitButton = new Color(81, 90, 101);
     Color background = new Color(213, 216, 228);
-    Color textColor = new Color(165, 168, 224
-    );
+    Color textColor = new Color(0x6e67a0);
     Color btmTopBars = new Color(193, 197, 220);
     private CardLayout crd;
     private Container slideShow;
@@ -181,23 +180,32 @@ public class CompositionFrame extends JPanel {
     private void createFirstSlide() {
         firstSlide = createSlide(".\\assets\\Shepot_composition.png", "Состав", true, 70);
 
+        JLabel instructions = new JLabel();
+        instructions.setBounds(730, 80, 550, 100);
+        instructions.setFont(new Font("Calibri", Font.BOLD, 22));
+        instructions.setHorizontalTextPosition(JLabel.CENTER);
+        instructions.setForeground(textColor);
+        instructions.setHorizontalAlignment(JLabel.CENTER);
+        instructions.setText("<html>Для получения более подробной информации об элементах комплекса, нажмите на соответствующий элемент слева или на его название в списке справа.</html>");
+        firstSlide.add(instructions);
+
         JLabel generalInfo = new JLabel();
-        generalInfo.setBounds(750, 100, 470, 350);
-        generalInfo.setFont(new Font("Calibri", Font.BOLD, 19));
+        generalInfo.setBounds(750, 170, 500, 350);
+        generalInfo.setFont(new Font("Calibri", Font.BOLD, 22));
         generalInfo.setHorizontalTextPosition(JLabel.CENTER);
         generalInfo.setForeground(textColor);
         generalInfo.setHorizontalAlignment(JLabel.LEFT);
-        generalInfo.setText("<html>1 - Средство измерения «Larson&Davis 824»<br>" +
-                "2 – Рабочая укладка с управляемым коммутатором<br>" +
-                "3 – Штатив, соединительные и измерительные кабели<br>" +
-                "4 - Микрофон «РСВ Piezotronics TMS130D20»<br>" +
-                "5 – Портативный компьютер<br>" +
-                "6 – Приемник<br>" +
-                "7 – Передатчик<br>" +
-                "8 – Генератор шума «Шорох-2МИ»<br>" +
-                "9 – Калибратор CAL-200<br>" +
-                "10 – Акселерометр «АР98-100»<br>" +
-                "11 – Акустический излучатель</html>");
+        generalInfo.setText("<html>Средство измерения «Larson&Davis 824»<br>" +
+                "Рабочая укладка с управляемым коммутатором<br>" +
+                "Штатив, соединительные и измерительные кабели<br>" +
+                "Микрофон «РСВ Piezotronics TMS130D20»<br>" +
+                "Портативный компьютер<br>" +
+                "Приемник<br>" +
+                "Передатчик<br>" +
+                "Генератор шума «Шорох-2МИ»<br>" +
+                "Калибратор CAL-200<br>" +
+                "Акселерометр «АР98-100»<br>" +
+                "Акустический излучатель</html>");
         firstSlide.add(generalInfo);
 
         JLabel partName = new JLabel();
@@ -207,6 +215,14 @@ public class CompositionFrame extends JPanel {
         partName.setForeground(textColor);
         partName.setHorizontalAlignment(JLabel.LEFT);
         firstSlide.add(partName);
+
+//        JLabel larson = new JLabel();
+//        larson.setLayout(new FlowLayout());
+//        larson.setBackground(Color.CYAN);
+//        larson.setOpaque(true);
+//        larson.setLocation(150, 150);
+//        larson.setText("Sample dffffffff Text");
+//        firstSlide.add(larson);
 
         JLabel part1 = new JLabel();
         part1.setBounds(434, 452, 655 - 434, 517 - 452);
@@ -229,6 +245,38 @@ public class CompositionFrame extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 partName.setText("<html>Средство измерения «Larson&Davis 824»</html>");
+                //larson.setVisible(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //larson.setVisible(false);
+
+            }
+        });
+        firstSlide.add(part1);
+
+        JLabel part21 = new JLabel();
+        part21.setBounds(750, 190, 1150-750, 220-190);
+        part21.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "2");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Средство измерения «Larson&Davis 824»</html>");
             }
 
             @Override
@@ -236,7 +284,7 @@ public class CompositionFrame extends JPanel {
 
             }
         });
-        firstSlide.add(part1);
+        firstSlide.add(part21);
 
         JLabel part2 = new JLabel();
         part2.setBounds(427, 330, 670 - 427, 447 - 330);
@@ -268,6 +316,36 @@ public class CompositionFrame extends JPanel {
         });
         firstSlide.add(part2);
 
+        JLabel part22 = new JLabel();
+        part22.setBounds(750, 220, 1230-750, 249-220);
+        part22.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "3");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Рабочая укладка с управляемым коммутатором</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part22);
+
         JLabel part3 = new JLabel();
         part3.setBounds(280, 93, 488 - 280, 295 - 93);
         part3.addMouseListener(new MouseListener() {
@@ -297,6 +375,36 @@ public class CompositionFrame extends JPanel {
             }
         });
         firstSlide.add(part3);
+
+        JLabel part23 = new JLabel();
+        part23.setBounds(750, 250, 1230-750, 280-250);
+        part23.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "4");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Штатив, соединительные и измерительные кабели</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part23);
 
         JLabel part4 = new JLabel();
         part4.setBounds(303, 343, 413 - 303, 414 - 343);
@@ -328,6 +436,36 @@ public class CompositionFrame extends JPanel {
         });
         firstSlide.add(part4);
 
+        JLabel part24 = new JLabel();
+        part24.setBounds(750, 280, 1230-750, 310-290);
+        part24.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "4");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Микрофон «РСВ Piezotronics TMS130D20»</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part24);
+
         JLabel part5 = new JLabel();
         part5.setBounds(160, 415, 396 - 160, 556 - 415);
         part5.addMouseListener(new MouseListener() {
@@ -357,6 +495,36 @@ public class CompositionFrame extends JPanel {
             }
         });
         firstSlide.add(part5);
+
+        JLabel part25 = new JLabel();
+        part25.setBounds(750, 310, 1230-750, 30);
+        part25.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "5");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Портативный компьютер</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part25);
 
         JLabel part6 = new JLabel();
         part6.setBounds(132, 218, 285 - 132, 286 - 218);
@@ -388,6 +556,36 @@ public class CompositionFrame extends JPanel {
         });
         firstSlide.add(part6);
 
+        JLabel part26 = new JLabel();
+        part26.setBounds(750, 340, 1230-750, 25);
+        part26.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "6");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Приемник</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part26);
+
         JLabel part7 = new JLabel();
         part7.setBounds(119, 285, 283 - 119, 315 - 285);
         part7.addMouseListener(new MouseListener() {
@@ -417,6 +615,36 @@ public class CompositionFrame extends JPanel {
             }
         });
         firstSlide.add(part7);
+
+        JLabel part27 = new JLabel();
+        part27.setBounds(750, 365, 1230-750, 25);
+        part27.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "6");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Передатчик</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part27);
 
         JLabel part8 = new JLabel();
         part8.setBounds(110, 312, 292 - 110, 392 - 312);
@@ -448,6 +676,36 @@ public class CompositionFrame extends JPanel {
         });
         firstSlide.add(part8);
 
+        JLabel part28 = new JLabel();
+        part28.setBounds(750, 395, 1230-750, 30);
+        part28.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "7");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Генератор шума «Шорох-2МИ»</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part28);
+
         JLabel part9 = new JLabel();
         part9.setBounds(100, 396, 154 - 100, 475 - 396);
         part9.addMouseListener(new MouseListener() {
@@ -477,6 +735,36 @@ public class CompositionFrame extends JPanel {
             }
         });
         firstSlide.add(part9);
+
+        JLabel part29 = new JLabel();
+        part29.setBounds(750, 410, 1230-750, 30);
+        part29.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "8");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Калибратор CAL-200</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part29);
 
         JLabel part10 = new JLabel();
         part10.setBounds(103, 474, 147 - 103, 525 - 474);
@@ -508,6 +796,36 @@ public class CompositionFrame extends JPanel {
         });
         firstSlide.add(part10);
 
+        JLabel part30 = new JLabel();
+        part30.setBounds(750, 440, 1230-750, 30);
+        part30.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "9");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Акселерометр «АР98-100»</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part30);
+
         JLabel part11 = new JLabel();
         part11.setBounds(67, 170, 114 - 67, 345 - 170);
         part11.addMouseListener(new MouseListener() {
@@ -525,7 +843,6 @@ public class CompositionFrame extends JPanel {
             public void mouseReleased(MouseEvent e) {
 
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
                 partName.setText("<html>Акустический излучатель</html>");
@@ -537,6 +854,35 @@ public class CompositionFrame extends JPanel {
             }
         });
         firstSlide.add(part11);
+
+        JLabel part31 = new JLabel();
+        part31.setBounds(750, 470, 1230-750, 30);
+        part31.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                crd.show(slideShow, "10");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //partName.setText("<html>Акустический излучатель</html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        firstSlide.add(part31);
     }
 
     private void createSecondSlide() {
